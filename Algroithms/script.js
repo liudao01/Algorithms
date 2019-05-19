@@ -9,7 +9,9 @@ function resetValue() {
  * 选择排序
  */
 function selectSort() {
+    console.log("排序前: " + srcArray)
     for (let i = 0; i < srcArray.length - 1; i++) {
+        console.log("第" + i + "遍")
         var min = i;
         for (let j = i + 1; j < srcArray.length; j++) {
             let temp = 0;
@@ -18,11 +20,9 @@ function selectSort() {
             }
         }
         swap(srcArray, min, i);
+        console.log("排序中 " + srcArray)
     }
-    for (let i = 0; i < srcArray.length; i++) {
-        console.log(srcArray[i])
-    }
-
+    console.log("排序后" + srcArray)
     document.getElementById("demo").innerHTML = srcArray;
 }
 
@@ -30,11 +30,12 @@ function selectSort() {
  * 插入排序
  */
 function insterSort() {
-
-    for (let i = 0; i < srcArray.length; i++) {
-
+    console.log("原始数组: " + srcArray);
+    for (let i = 1; i < srcArray.length; i++) {
+        console.log("第" + i + "遍")
         for (let j = i; j > 0; j--) {
             if (srcArray[j] < srcArray[j - 1]) {
+                console.log("插入中: " + srcArray)
                 swap(srcArray, j, j - 1)
             }
         }
@@ -46,8 +47,14 @@ function insterSort() {
 /**
  * 希尔排序
  */
-function shallSort() {
-
+function shellSort() {
+    var step = 4;
+    for (let i = step; i < srcArray.length; i++) {
+        for (let j = i; j < step - 1; j -= step) {
+            swap(srcArray, j, j - step);
+        }
+    }
+    document.getElementById("demo").innerHTML = srcArray;
 }
 
 /**
