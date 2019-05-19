@@ -17,7 +17,7 @@ function selectSort() {
                 min = j;
             }
         }
-        swap(srcArray,min, i);
+        swap(srcArray, min, i);
     }
     for (let i = 0; i < srcArray.length; i++) {
         console.log(srcArray[i])
@@ -30,7 +30,24 @@ function selectSort() {
  * 插入排序
  */
 function insterSort() {
-    document.getElementById("demo").innerHTML = Date();
+
+    for (let i = 0; i < srcArray.length; i++) {
+
+        for (let j = i; j > 0; j--) {
+            if (srcArray[j] < srcArray[j - 1]) {
+                swap(srcArray, j, j - 1)
+            }
+        }
+    }
+    console.log(srcArray);
+    document.getElementById("demo").innerHTML = srcArray;
+}
+
+/**
+ * 希尔排序
+ */
+function shallSort() {
+
 }
 
 /**
@@ -38,7 +55,7 @@ function insterSort() {
  * @param min
  * @param i
  */
-function swap(arr,min, i) {
+function swap(arr, min, i) {
     let temp = arr[min];
     arr[min] = arr[i];
     arr[i] = temp;
