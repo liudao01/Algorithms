@@ -1,7 +1,7 @@
 var srcArray;
 
 function resetValue() {
-    srcArray = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48];
+    srcArray = [9, 6, 11, 3, 5, 12, 8, 7, 10, 15, 14, 4, 1, 13, 2];
     document.getElementById("demo").innerHTML = srcArray;
 }
 
@@ -48,12 +48,29 @@ function insterSort() {
  * 希尔排序
  */
 function shellSort() {
-    var step = 4;
-    for (let i = step; i < srcArray.length; i++) {
-        for (let j = i; j < step - 1; j -= step) {
-            swap(srcArray, j, j - step);
+    console.log("原始数组: " + srcArray);
+    // for (var step = Math.floor(srcArray.length / 2); step > 0; step = Math.floor(step / 2)) {
+    //     for (let i = step; i < srcArray.length; i++) {
+    //         for (let j = i; j > step - 1; j -= step) {
+    //             if (srcArray[j] < srcArray[j - step]) {
+    //                 swap(srcArray, j, j - step);
+    //                 console.log("排序中: " + srcArray);
+    //             }
+    //         }
+    //     }
+    // }
+    //已间隔为4 排序
+    for (var step = 4; step > 0; step = Math.floor(step / 2)) {
+        for (let i = step; i < srcArray.length; i++) {
+            for (let j = i; j > step - 1; j -= step) {
+                if (srcArray[j] < srcArray[j - step]) {
+                    swap(srcArray, j, j - step);
+                    console.log("排序中: " + srcArray);
+                }
+            }
         }
     }
+    console.log("排序后: " + srcArray);
     document.getElementById("demo").innerHTML = srcArray;
 }
 
