@@ -61,6 +61,7 @@ function shellSort() {
     // }
     //已间隔为4 排序
     for (var step = 4; step > 0; step = Math.floor(step / 2)) {
+            console.log("第step"+step+"排序中: " + srcArray);
         for (let i = step; i < srcArray.length; i++) {
             for (let j = i; j > step - 1; j -= step) {
                 if (srcArray[j] < srcArray[j - step]) {
@@ -74,6 +75,59 @@ function shellSort() {
     document.getElementById("demo").innerHTML = srcArray;
 }
 
+
+/**
+ * 递归调用
+ */
+function f(n) {
+    console.log(n);
+    if(n<1)return-1;
+    if(n==1)return 1;
+    return n + f(n - 1);
+}
+/**
+ * 归并排序
+ */
+function mergeSort() {
+    var arr = [1,4,7,8,3,6,9];
+    let temp = new Array();
+    let mid = Math.floor(arr.length/2);
+    console.log("中间: "+mid)
+    merge(arr, 0,mid, arr.length,temp);
+}
+
+function merge(arr, left,mid, right, temp) {
+    let i = left;//左序列指针
+    let j = mid+1;//右序列指针
+    let k = 0;//临时数组指针
+
+    while (i<=mid && j<=right){
+        console.log("数组排序中: "+temp);
+        if(arr[i]<=arr[j]){
+            temp[k] = arr[i];
+            i++;
+            k++;
+        }else {
+            temp[k] = arr[j];
+            j++;
+            k++;
+        }
+    }
+    //左边有遗留
+    while(i<=mid){//将左边剩余元素填充进temp中
+        temp[k++] = arr[i++];
+    }
+    //右边有剩下
+    while(j<=right){//将右序列剩余元素填充进temp中
+        temp[k++] = arr[j++];
+    }
+    k = 0;
+    //将temp中的元素全部拷贝到原数组中
+    console.log("数组 "+temp);
+    // while(left <= right){
+    //     arr[left++] = temp[k++];
+    // }
+}
 /**
  * 交换
  * @param min
